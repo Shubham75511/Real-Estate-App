@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 //create rules
 
-const userSchema = new mongoose.schema({
+const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
