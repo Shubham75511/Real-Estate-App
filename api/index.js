@@ -29,4 +29,15 @@ app.listen(3000, () => {
 //create api route
 
 app.use("/api/user", userRouter);
-app.use("/api/auth", authRouter);                // api test softwares ex like postman, insomnia etc.
+app.use("/api/auth", authRouter); // api test softwares ex like postman, insomnia etc.
+
+//middleware
+app.use((err, req, res, next) => {
+  const statusCode = err.statuscode || 500;
+  const message = err.message || "Internal Server Error";
+  return res.status(statusCode).json({
+    status: "false",
+    statusCode,
+    message,
+  });
+});
