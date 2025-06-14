@@ -24,8 +24,8 @@ export const signin = async (req, res, next) => {
   try {
     const validUser = await User.findOne({ email }); // find user by email
     if (!validUser) return next(errorHandler(404, "User not found!"));
-    const validpassword = bcrypt.compareSync(password, validUser.password); // compare password
-    if (!validpassword) return next(errorHandler(401, "Wrong Credentials"));
+    const validPassword = bcrypt.compareSync(password, validUser.password); // compare password
+    if (!validPassword) return next(errorHandler(401, "Wrong Credentials"));
     const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
     const { password: pass, ...rest } = validUser._doc; // destructure to remove password from user details
     res

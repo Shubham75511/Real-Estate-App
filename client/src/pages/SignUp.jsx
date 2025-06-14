@@ -33,7 +33,7 @@ export default function SignUp() {
         } // send information(formData) from body of the browser.
       );
       const data = await res.json(); //change & convert response to json
-      if (data.successs === false) {
+      if (!res.ok) {
         setLoading(false);
         setError(data.message);
         return;
