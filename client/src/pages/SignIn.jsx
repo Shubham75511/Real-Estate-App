@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector} from "react-redux";
+import { signInStart , signInFailure, signInSuccess} from "../redux/user/userSlice";
 
+// SignIn component for user authentication
 export default function SignIn() {
   const [formData, setFormData] = useState({});
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const { loading, error } = useSelector((state) => state.user); // Extract loading and error from user state
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // handleChange function to update formData state
   const handleChange = (e) => {
@@ -19,7 +22,7 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true);
+      dispatch(signInStart()); // Dispatch signInStart action to update loading state
       //fetch method to request for our api route.
       //api route address: localhost:3000/api/auth/signin
       const res = await fetch(
@@ -34,16 +37,13 @@ export default function SignIn() {
       );
       const data = await res.json(); //change & convert response to json
       if (!res.ok) {
-        setLoading(false);
-        setError(data.message);
+        dispatch(signInFailure(data.message)); // Dispatch signInFailure action with error message
         return;
       }
-      setLoading(false);
-      setError(null);
+      dispatch(signInSuccess(data)); // Dispatch signInSuccess action with user data
       navigate("/"); // redirect to Home page after successful signin
     } catch (error) {
-      setLoading(false);
-      setError(error.message);
+      dispatch(signInFailure(error.message)); // Dispatch signInFailure action with error message
     }
   };
   // console.log(data);
