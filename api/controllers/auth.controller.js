@@ -1,11 +1,11 @@
 import User from "../models/user.model.js";
-import bcryptjs from "bcryptjs";
+import bcrypt from "bcrypt";
 
 export const signup = async (req, res, next) => {
   // 'req.body' is the information we get from browser.
 
   const { username, email, password } = req.body;
-  const hashedPassword = bcryptjs.hashSync(password, 10);
+  const hashedPassword = bcrypt.hashSync(password, 10);
   //then we are gonna save it inside the database using:
   const newUser = new User({ username, email, password: hashedPassword }); //from user.model.js
   try {
