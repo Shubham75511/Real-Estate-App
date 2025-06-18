@@ -1,11 +1,10 @@
-import { use } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ListingItem from "../components/ListingItem";
 
 export default function Search() {
   const navigate = useNavigate();
-  const [sidebardata, setSidebardata] = React.useState({
+  const [sidebardata, setSidebardata] = useState({
     searchTerm: "",
     type: "all",
     parking: false,
@@ -188,7 +187,7 @@ export default function Search() {
                 id="offer"
                 className="w-5"
                 onChange={handleChange}
-                checked={sidebardata.type === "offer"}
+                checked={sidebardata.offer}
               />
               <span>Offer</span>
             </div>
@@ -201,7 +200,7 @@ export default function Search() {
                 id="parking"
                 className="w-5"
                 onChange={handleChange}
-                checked={sidebardata.type === "parking"}
+                checked={sidebardata.parking}
               />
               <span>Parking</span>
             </div>
@@ -211,7 +210,7 @@ export default function Search() {
                 id="furnished"
                 className="w-5"
                 onChange={handleChange}
-                checked={sidebardata.type === "furnished"}
+                checked={sidebardata.furnished}
               />
               <span>Furnished</span>
             </div>

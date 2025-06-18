@@ -10,7 +10,7 @@ export default function Header() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const urlparams = new URLSearchParams(window.location.search); 
-    urlparams.set("search", searchTerm); 
+    urlparams.set("searchTerm", searchTerm); 
     const searchQuery = urlparams.toString();
     navigate(`/search?${searchQuery}`); 
   }
@@ -25,7 +25,7 @@ export default function Header() {
 
   return (
     <header className="bg-slate-200 shadow-md">
-      <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
+      <div className="flex justify-between items-center max-w-6xl mx-auto p-4 m">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
             <span className="text-slate-500">Real</span>
@@ -45,7 +45,7 @@ export default function Header() {
             <FaSearch className="text-slate-600" />
           </button>
         </form>
-        <ul className="flex gap-4">
+        <ul className="flex gap-7">
           <Link to="/">
             <li className="hidden sm:inline text-slate-700 hover:underline">
               Home

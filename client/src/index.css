@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: rgb(241, 245, 241);
+body {
+  background-color: rgb(241, 245, 241);
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  font-size: large;
 }
