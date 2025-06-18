@@ -5,6 +5,7 @@ import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
 import listingRouter from "./routes/listing.route.js";
 import cookieParser from "cookie-parser";
+import path from "path";
 dotenv.config();
 
 //Now connecting server to database using mongodb/mangoose
@@ -16,6 +17,8 @@ mongoose
   .catch((err) => {
     console.log("err");
   });
+
+  const __dirname = path.resolve(); // to get the current directory name
 
 const app = express(); // create app
 
@@ -35,6 +38,12 @@ app.listen(3000, () => {
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter); // api test softwares ex like postman, insomnia etc.
 app.use("/api/listing", listingRouter); // add listing route
+
+app.use(express.static(path.join(__dirname, "../client/dist"))); // serve static files from client/dist
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html")); // serve index.html for all other routes
+})
 
 //middleware
 app.use((err, req, res, next) => {
