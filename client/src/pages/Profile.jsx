@@ -167,7 +167,7 @@ export default function Profile() {
 
   return (
     <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
+      <h1 className="text-3xl font-semibold text-center my-7 text-textMain">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           onChange={(e) => setFile(e.target.files[0])}
@@ -188,7 +188,7 @@ export default function Profile() {
               Error Image upload (image must be less than 2 mb)
             </span>
           ) : filePerc > 0 && filePerc < 100 ? (
-            <span className="text-slate-700">{`Uploading ${filePerc}%`}</span>
+            <span className="text-textMain">{`Uploading ${filePerc}%`}</span>
           ) : filePerc === 100 ? (
             <span className="text-green-700">Image successfully uploaded!</span>
           ) : (
@@ -247,7 +247,7 @@ export default function Profile() {
       <p className="text-green-700 mt-5">
         {updateSuccess ? "Profile updated successfully!" : ""}
       </p>
-      <button onClick={handleShowListings} className="text-green-700 w-full">
+      <button onClick={handleShowListings} className="text-textMain underline w-full">
         Show Listings
       </button>
       <p className="text-red-700 mt-5">
@@ -272,7 +272,7 @@ export default function Profile() {
                 />
               </Link>
               <Link
-                className="text-slate-700 font-semibold  hover:underline truncate flex-1"
+                className="text-slate-800 font-semibold  hover:underline truncate flex-1"
                 to={`/listing/${listing._id}`}
               >
                 <p>{listing.name}</p>
