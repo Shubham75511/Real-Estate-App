@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function Header() {
   const { currentUser } = useSelector((state) => state.user);  //useSelector to get user from auth state
-  const [ searchTerm, setSearchTerm ] = useState(" "); //useSelector to get search term from search state
+  const [ searchTerm, setSearchTerm ] = useState(""); //useSelector to get search term from search state
   const navigate = useNavigate(); 
   const handleSubmit = (e) => {
     e.preventDefault();
