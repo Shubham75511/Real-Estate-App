@@ -62,9 +62,9 @@ export default function Home() {
         </div>
         <Link
           to={"/search"}
-          className="text-sm sm:text-base text-slate-800 font-bold bg-secondary hover:bg-textMain m-auto px-3 py-1 rounded-md shadow-slate-800"
+          className="text-sm sm:text-base text-textMain font-semibold bg-primary hover:bg-slate-700 m-auto px-3 py-1 rounded-md"
         >
-          EXPLORE LISTINGS
+          Explore Listings
         </Link>
       </div>
 
